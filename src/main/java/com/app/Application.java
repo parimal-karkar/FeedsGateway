@@ -6,6 +6,8 @@ import com.app.processors.event.EventProcessor;
 import com.app.processors.event.JsonEventProcessor;
 import com.app.processors.io.FileProcessor;
 import com.app.processors.io.JsonFileProcessor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -13,9 +15,11 @@ import java.util.Scanner;
 
 /**
  * Application main entry point
- *  accepts file path as program argument or as command line argument
+ * accepts file path as program argument or as command line argument
  */
 public class Application {
+    private static final Logger LOG = LoggerFactory.getLogger(Application.class);
+
     public static void main(String[] args) throws IOException {
         if (args.length == 1) {
             processFile(args[0]);
@@ -32,8 +36,8 @@ public class Application {
                 }
             }
             System.out.println("Stopping program ...");
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
+            LOG.error("Error occurred while processing file.", e);
         }
     }
 
@@ -42,7 +46,7 @@ public class Application {
         Path filePath = Path.of(input);
         ErrorProcessor errorProcessor = new ErrorProcessor();
         EventProcessor eventProcessor = new JsonEventProcessor(dao);
-        FileProcessor fileProcessor = new JsonFileProcessor(eventProcessor, filePath,errorProcessor);
+        FileProcessor fileProcessor = new JsonFileProcessor(eventProcessor, filePath, errorProcessor);
         fileProcessor.processFile();
     }
 }

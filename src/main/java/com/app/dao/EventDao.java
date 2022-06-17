@@ -8,18 +8,12 @@ import org.slf4j.LoggerFactory;
 
 import java.sql.*;
 
-public class EventDao {
+public class EventDao extends BaseDao {
     private static final Logger LOG = LoggerFactory.getLogger(EventDao.class);
 
-    private final String db;
-    private final String user;
-    private final String password;
-
     public EventDao() {
-        this.db = Constants.JDBC_HSQLDB_URL;
-        this.user = Constants.DB_USER;
-        this.password = Constants.DB_PASSWORD;
-        try (Connection conn = DriverManager.getConnection(db, user, password)) {
+        super();
+        try (Connection conn = getConnection()) {
             LOG.debug("Created table {}", conn.createStatement().executeUpdate(Constants.CREATE_TABLE));
         } catch (SQLException ex) {
             LOG.error("Couldn't create table", ex);
@@ -28,8 +22,7 @@ public class EventDao {
     }
 
     public void save(EventEntity eventEntity, boolean update) {
-        try (Connection conn = DriverManager.getConnection(db, user, password)) {
-
+        try (Connection conn = getConnection()) {
             if (!update) {
                 PreparedStatement statement = conn.prepareStatement(Constants.SQL_INSERT_INTO_EVENT);
                 statement.setString(1, eventEntity.getEventId());
@@ -59,7 +52,8 @@ public class EventDao {
 
     public EventEntity get(String id) {
         EventEntity eventEntity = null;
-        try (Connection conn = DriverManager.getConnection(db, user, password)) {
+        try (Connection conn = getConnection()) {
+            conn.setTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED);
             try (PreparedStatement statement = conn.prepareStatement(Constants.SQL_SELECT_EVENT)) {
                 statement.setString(1, id);
                 try (ResultSet resultSet = statement.executeQuery()) {

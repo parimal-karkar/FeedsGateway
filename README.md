@@ -1,4 +1,7 @@
-**FeedsGateway**
+#FeedsGateway
+
+File processor demonstrating concurrent json record
+processing using java, jackson
 
 Steps to build and run:    
   ``` 

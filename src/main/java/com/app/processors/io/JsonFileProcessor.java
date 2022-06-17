@@ -33,7 +33,7 @@ public class JsonFileProcessor implements FileProcessor {
         validateFilePath(filePath);
         LOG.info("Starting record processing for file: {}", filePath);
         try (Stream<String> eventStream = Files.lines(filePath)) {
-            eventStream.forEach(this::processEvent);
+            eventStream.parallel().forEach(this::processEvent);
         }
         LOG.info("Finished record processing for file: {}", filePath);
     }
