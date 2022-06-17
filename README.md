@@ -10,7 +10,7 @@ Steps to build and run:
    - Run command mvn clean package
    - Run java command with file path argument
     
-      java -jar target/feedsgateway-1.0-SNAPSHOT-jar-with-dependencies.jar logFile.txt
+      java -jar target/feedsgateway-1.0-jar-with-dependencies.jar logFile.txt
  
 
 ```
