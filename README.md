@@ -1,4 +1,4 @@
-#FeedsGateway
+## FeedsGateway
 
 File processor demonstrating concurrent json record
 processing using java, jackson
@@ -14,3 +14,8 @@ Steps to build and run:
  
 
 ```
+
+
+**Build :** 
+
+[![Maven Package](https://github.com/parimal-karkar/FeedsGateway/actions/workflows/maven-publish.yml/badge.svg)](https://github.com/parimal-karkar/FeedsGateway/actions/workflows/maven-publish.yml)
