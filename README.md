@@ -20,5 +20,6 @@ Steps to build and run:
 
 [![Maven Package](https://github.com/parimal-karkar/FeedsGateway/actions/workflows/maven-publish.yml/badge.svg)](https://github.com/parimal-karkar/FeedsGateway/actions/workflows/maven-publish.yml)
 
-**Code analysis: **
+**Code analysis:**
+
 [![pmd](https://github.com/parimal-karkar/FeedsGateway/actions/workflows/pmd.yml/badge.svg)](https://github.com/parimal-karkar/FeedsGateway/actions/workflows/pmd.yml)
