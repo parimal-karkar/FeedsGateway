@@ -14,7 +14,7 @@ public class EventDao extends BaseDao {
     public EventDao() {
         super();
         try (Connection conn = getConnection()) {
-            LOG.debug("Created table {}", conn.createStatement().executeUpdate(Constants.CREATE_TABLE));
+            LOG.info("Created table {}", conn.createStatement().executeUpdate(Constants.CREATE_TABLE));
         } catch (SQLException ex) {
             LOG.error("Couldn't create table", ex);
             throw new DataAccessException("Error occurred while creating event table", ex);
