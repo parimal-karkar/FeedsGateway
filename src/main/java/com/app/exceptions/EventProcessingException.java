@@ -4,7 +4,7 @@ public class EventProcessingException extends RuntimeException{
     public EventProcessingException(){
         super();
     }
-    public EventProcessingException(String errorMessage){
-        super(errorMessage);
+    public EventProcessingException(String errorMessage, Throwable throwable){
+        super(errorMessage, throwable);
     }
 }

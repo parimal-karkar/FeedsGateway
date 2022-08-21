@@ -21,8 +21,9 @@ public class Application {
     private static final Logger LOG = LoggerFactory.getLogger(Application.class);
 
     public static void main(String[] args) throws IOException {
+        Application app = new Application();
         if (args.length == 1) {
-            processFile(args[0]);
+            app.processFile(args[0]);
             return;
         }
         System.out.println("Provide absolute file path to process or type 'exit' to stop program ");
@@ -32,7 +33,7 @@ public class Application {
                 if ("exit".equalsIgnoreCase(input)) {
                     break;
                 } else {
-                    processFile(input);
+                    app.processFile(input);
                 }
             }
             System.out.println("Stopping program ...");
@@ -41,7 +42,7 @@ public class Application {
         }
     }
 
-    private static void processFile(String input) throws IOException {
+    private void processFile(String input) throws IOException {
         EventDao dao = new EventDao();
         Path filePath = Path.of(input);
         ErrorProcessor errorProcessor = new ErrorProcessor();

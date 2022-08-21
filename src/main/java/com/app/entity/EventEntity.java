@@ -3,15 +3,12 @@ package com.app.entity;
 import java.time.Instant;
 
 public class EventEntity {
-    String eventId;
-    Instant startTime;
-    Instant endTime;
-    String type;
-    String host;
-    Boolean alert = false;
-
-    public EventEntity() {
-    }
+    private String eventId;
+    private Instant startTime;
+    private Instant endTime;
+    private String type;
+    private String host;
+    private Boolean alert = false;
 
     public String getEventId() {
         return eventId;

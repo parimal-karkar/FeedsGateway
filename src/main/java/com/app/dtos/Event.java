@@ -19,10 +19,6 @@ public class Event {
     @JsonProperty(required = true)
     private Date timestamp;
 
-    public Event() {
-        super();
-    }
-
     public String getId() {
         return id;
     }

@@ -35,8 +35,8 @@ final public class JsonEventProcessor implements EventProcessor {
              dao.save(entity, update);
 
         } catch (JsonProcessingException e) {
-            LOG.error("Error occurred while parsing event ",e);
-            throw new EventProcessingException(e.getMessage());
+            LOG.error("Error occurred while parsing event ", e);
+            throw new EventProcessingException(e.getMessage(), e);
         }
     }
 
